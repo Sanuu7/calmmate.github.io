@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<style>
+.watermark {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  opacity: 0.5;
+}
+</style>
+<p class="watermark">CalmMate</p>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+50% {
+    background-position: 100% 50%;
+ }
+100% {
+    background-position: 0% 50%;
+ }
+}
+
+.container {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ height: inherit;
+ background: linear-gradient(-45deg, #6a11cb, #2575fc);
+ background-size:400%400%;
+ animation: gradient 30s ease infinite;
+}
+
+.box {
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ width:auto;
+ height:auto; 
+ border-radius:10px; 
+ background-color:black; 
+ padding-top:10px; 
+ padding-bottom:10px; 
+}
+
+audio{
+ display:none; 
+}
+
+button{
+ cursor:pointer; 
+ border:none; 
+ outline:none; 
+ color:white; 
+ font-size:36px; 
+ background-color:black; 
+ border-radius:18px;  
+ width:auto;
+ height:auto;
+ padding-left:20px;
+ padding-right:20px
+}
+button .material-icons{
+ position:relative ;
+ overflow:hidden ;
+}
+button .material-icons::after{
+ content:'' ;
+ position:absolute ;
+ top:-50% ;
+ left:-50% ;
+ width :200% ;
+ height :200% ;
+ border-radius :50% ;
+ z-index :-1 ;  
+}
+button .material-icons::before{
+ content:'' ;
+ position:absolute ;
+ top:-50% ;
+ left:-50% ;
+ width :200% ;
+ height :200% ;  
+ z-index :-1 ;  
+}
+button .material-icons:hover::after{
+ animation-name:pulse-ripple-outwards ;  
+ animation-duration:.5s ;   
+}
+button .material-icons:hover::before{
+ animation-name:pulse-ripple-inwards ;  
+ animation-duration:.5s ;   
+}
+@keyframes pulse-ripple-outwards {
+    from { transform :scale(0) translate(-50%, -50%) }
+    to { transform :scale(1) translate(-50%, -50%) }
+}
+@keyframes pulse-ripple-inwards {
+    from { transform :scale(1) translate(-50%, -50%) }
+    to { transform :scale(0) translate(-50%, -50%) }
+}
+</style>
+<script>
+let audio = new Audio('https://files.catbox.moe/tlb6aj.mp3');
+audio.loop = true;
+
+function playAudio() {
+ audio.play();
+ document.getElementById("play").style.display = "none";
+ document.getElementById("pause").style.display = "inline-block";
+ document.querySelector(".container").style.backgroundImage = "linear-gradient(-45deg, #6a11cb, #ff0000)";
+}
+
+function pauseAudio() {
+ audio.pause();
+ document.getElementById("play").style.display = "inline-block";
+ document.getElementById("pause").style.display = "none";
+ document.querySelector(".container").style.backgroundImage = "linear-gradient(-45deg, #6a11cb, #2575fc)";
+}
+</script>
+</head>
+<body>
+
+<div class="container">
+ <div class="box">
+   <button id="play" onclick="playAudio()"><span class="material-icons">play_arrow</span></button>  
+   <button id="pause" onclick="pauseAudio()" style="display:none;"><span class="material-icons">pause</span></button>  
+ </div> 
+</div>
+
+</body>
+</html>
