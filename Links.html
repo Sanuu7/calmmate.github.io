@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Linktree</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(270deg, #ff0080, #7928ca, #ff0080);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+        h1 {
+            text-align: center;
+        }
+        .link-container, .audio-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        .link-container a, button {
+            display: block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: black;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+        }
+        .link-container a:hover, button:hover {
+            background-color: #333;
+        }
+        .made-by {
+            text-align: center;
+            animation: fadeIn 1s ease-in-out 5s forwards;
+            opacity: 0;
+        }
+        .project-by {
+            text-align: center;
+            animation: fadeIn 1s ease-in-out 2s forwards, moveDown 1s ease-in-out 4s forwards;
+            opacity: 0;
+        }
+        @keyframes moveDown {
+            from {transform: translateY(0);}
+            to {transform: translateY(20px);}
+        }
+        .audio-container button {
+          animation-delay:2s; 
+          opacity :0; 
+          animation-fill-mode :forwards; 
+          animation-duration :1s; 
+          animation-timing-function :ease-in-out; 
+          animation-name :fadeIn; 
+          cursor:pointer
+         }
+    </style>
+    <script>
+      function toggleAudio() {
+          var audio = document.getElementById('audio');
+          if (audio.paused) {
+              audio.play();
+              document.getElementById('audioButton').innerHTML = "Stop Audio";
+          } else {
+              audio.pause();
+              document.getElementById('audioButton').innerHTML = "Play Audio";
+          }
+      }
+    </script>
+</head>
+<body>
+    <audio id="audio" src="https://files.catbox.moe/lagi9k.m4a"></audio>
+    <h1>My Linktree</h1>
+    <div class="link-container">
+        <!-- Add your links here -->
+        <a href="https://www.example.com">Example</a>
+        <a href="https://www.example.com">Example</a>
+        <a href="https://www.example.com">Example</a>
+    </div>
+    <p class="made-by">Made By Sanuj</p>
+    <p class="project-by">A Project By Sanuj</p>
+    <div class="audio-container">
+      <button id="audioButton" onclick="toggleAudio()">Play Audio</button>
+    </div>
+</body>
+  </html>
+  
